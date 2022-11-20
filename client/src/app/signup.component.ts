@@ -10,10 +10,11 @@ import { UserService } from './user.service';
   styleUrls: []
 })
 export class SignupComponent implements OnInit {
+  message!:{success:boolean, error?:string}
 form = inject(FormBuilder).nonNullable.group({
     fullname:['user1 user',Validators.required],
     email:['user1@miu.edu',Validators.required ],
-    password:['123', Validators.required]
+    password:['a12345678', Validators.required]
 })
   constructor(private userService: UserService, private router: Router) { }
   onSubmit(){
@@ -22,7 +23,7 @@ this.userService.addUser(this.form.value as IUser).subscribe((response) =>{
         console.log('Saved successfuly!');
         this.router.navigate(['','login'])
     }else{
-        console.log('Register Failed');
+        this.message = response;
     }
 })
   }

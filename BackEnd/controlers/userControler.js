@@ -9,12 +9,24 @@ exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await userModele.findOne({ email });
-    if (!user) throw new Error("user not found");
-    const match = bcrypt.compare(password, user.password);
-    if (!match) throw new Error("wrong password");
-    const token = { user_id:user._id, fullname:user.fullname, email: user.email };
+    if (!user) {
+      res.json({ success: false, error: "user not found" });
+    }else{
+       const match = bcrypt.compareSync(password, user.password);
+    if (!match) {
+      res.json({ success: false, error: "wrong password" });
+    }else{
+      const token = {
+      user_id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+    };
     const tokenHah = jwt.sign(token, PRIVATE_KEY);
     res.json({ success: true, data: tokenHah });
+    }
+    
+    }
+   
   } catch (e) {
     next(e);
   }
@@ -22,14 +34,17 @@ exports.login = async (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
   try {
-    console.log(req.file);
     const { email, fullname, password } = req.body;
-    const hash = await bcrypt.hash(password, saltRounds);
-    const result = await userModele.create({ ...req.body, password: hash });
-
-    res.json({ success: true, data: result });
+    const find = await userModele.findOne({ email });
+    if (!find) {
+      const hash = await bcrypt.hash(password, saltRounds);
+      const result = await userModele.create({ ...req.body, password: hash });
+      res.json({ success: true, data: result });
+    } else {
+      res.json({ success: false, error: "Email Already Exist" });
+    }
   } catch (e) {
     // next(e)
-    res.json({ success: false, error: "fail to signup" });
+    res.json({ success: false, error: "Fail to signup" });
   }
 };

@@ -11,9 +11,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(user: IUser){
-   return this.http.post<{success: number, data: string}>(environment.server+`/users/login`, user);
+   return this.http.post<{success: boolean, data: string, error?:string}>(environment.server+`/users/login`, user);
   }
   addUser(user: IUser){
-    return this.http.post<{success: number, data: IUser}>(environment.server+`/users/signup`, user);  
+    return this.http.post<{success: boolean, data?: IUser, error?:string}>(environment.server+`/users/signup`, user);  
   }
 }

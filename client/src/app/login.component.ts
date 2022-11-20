@@ -14,9 +14,10 @@ import jwt_decode from 'jwt-decode';
   styleUrls: []
 })
 export class LoginComponent implements OnInit {
+  message!:{success:boolean, error?:string}
 form = inject(FormBuilder).nonNullable.group({
     email:['user1@miu.edu',Validators.required ],
-    password:['123', Validators.required]
+    password:['', Validators.required]
 })
   constructor(
     private userService: UserService,
@@ -27,9 +28,9 @@ form = inject(FormBuilder).nonNullable.group({
   login(){
 this.userService.login(this.form.value as IUser).subscribe((response) =>{
     if(response.success){
-        console.log('Welcome!');
+        console.log(this.form.value);
         const decoded = jwt_decode(response.data) as IUser;
-        console.log(decoded);
+        
         const state = {
             user_id:decoded.user_id,
             email:decoded.email,
@@ -40,7 +41,7 @@ this.userService.login(this.form.value as IUser).subscribe((response) =>{
         localStorage.setItem('@STATE', JSON.stringify(state));
          this.router.navigate(['goals']);
     }else{
-        console.log('Login Failed');
+      this.message = response;
     }
 })
   }

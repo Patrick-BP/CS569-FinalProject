@@ -112,11 +112,17 @@
 
                             <div class="form-group col-lg-6">
                                 <label>Email Address</label>
-                                <input class="form-control" placeholder="Email Address" formControlName="email">
+                                <input type="email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"  class="form-control" placeholder="Email Address" formControlName="email">
+                                <div class="text-danger " *ngIf="form.get('email')?.invalid">Invalid email</div>
+                                <div *ngIf="form.get('email')?.hasError('invalid')">Error</div>
+                                <div class="text-danger " *ngIf="message?.error">{{message.error}}</div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                                <input type="password"   required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" class="form-control" placeholder="Password" formControlName="password">
+                                <div class="text-danger " *ngIf="form.get('password')?.invalid">Invalid password</div>
+                                <div *ngIf="form.get('password')?.hasError('invalid')">Error</div>
+                                <label>Minimum eight characters, at least one letter and one number</label>
                             </div>
                             
                            
