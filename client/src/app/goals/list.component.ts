@@ -17,7 +17,8 @@ export class ListComponent implements OnInit {
   goal_id!: string;
   searchInput!: string;
   progress!: string;
-  name!:string
+  name!:string;
+  empty = false;
   constructor(
     private router: Router,
     private globalstate: StateService,
@@ -33,6 +34,7 @@ export class ListComponent implements OnInit {
     this.goalService.getGoalsByUser(this.user_id).subscribe((response) => {
       if (response.success) {
         this.goals = response.data.reverse();
+        this.empty = this.goals.length <= 0 ? false : true;
       }
     });
   }

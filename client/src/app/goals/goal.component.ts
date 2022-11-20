@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component,  inject, OnInit,  } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component,  inject, OnInit,  } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StateService } from '../globalsate.service';
@@ -25,7 +25,7 @@ import { IGoal, IStep } from './goals.interface';
   `]
    
 })
-export class GoalComponent implements OnInit {
+export class GoalComponent {
   name!:string
   progress = [
     { id: 1, name: 'not-started' },
@@ -36,7 +36,15 @@ export class GoalComponent implements OnInit {
   form = inject(FormBuilder).nonNullable.group({
     status: [''],
   });
-  goal!: IAddGoal ;
+  goall!: IAddGoal ;
+  goal:IAddGoal={
+    _id:'',
+    user_id:'', 
+    title:'',
+    description:'',
+    deadline:'', 
+    steps:[]
+  }
   empty = false;
   goal_id!: string;
   constructor(
@@ -52,15 +60,14 @@ export class GoalComponent implements OnInit {
     this.name = state.fullname
   });
   }
+
   
-  ngOnInit(): void {
-    this.getGoal();
-  }
  
   getGoal(){
     this.goalService.getGoalById(this.goal_id).subscribe((response) => {
       if (response.success) {
-        this.goal = response.data;
+        this.goal = response.data ;
+        this.goall = response.data ;
         this.empty = this.goal.steps.length <= 0 ? false : true;
         
       }
@@ -78,10 +85,12 @@ export class GoalComponent implements OnInit {
     let step!:IStep;
     this.goalService.getStepById(step_id).subscribe((res)=>{
       step =res.data[0]; 
+    
     })
     this.goalService.updateStep(this.goal_id, step_id, {...step, status:this.form.get('status')?.value as string}).subscribe((response)=>{
 if(response.success){
   this.getGoal()
+ 
 }
     })
   }

@@ -97,7 +97,7 @@
    
         <input type="text" placeholder="Search..." class="form-control" [(ngModel)]="searchInput">
     
-    <table>
+    <table  *ngIf="empty">
         <tr>
             
             <th>Title</th>
@@ -135,7 +135,7 @@
 
         
     </table>
-   
+    <h3 *ngIf="!empty" class="text-light mt-5">There is no Goals yet</h3>
 </div>
                     
                 </div>

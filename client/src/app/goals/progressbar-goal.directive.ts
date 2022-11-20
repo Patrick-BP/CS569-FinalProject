@@ -5,7 +5,7 @@ import { IStep } from './goals.interface';
   selector: '[appProgressbarGoal]'
 })
 export class ProgressbarGoalDirective {
-  @Input('appProgressbarGoal') steps!:IStep[];
+  @Input('appProgressbarGoal') steps:IStep[] = [];
   @HostBinding('style.width') elementClass ="0%"
   @HostBinding('innerHtml') element = "0%"
   constructor() { }

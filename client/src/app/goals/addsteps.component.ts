@@ -50,7 +50,7 @@ export class AddstepsComponent implements OnInit {
     this.goalService.addStep(this.goal_id, this.steps).subscribe((response) => {
       if(response.success){
         this.toastr.success('Step was updated');
-        this.router.navigate(['..']);
+        this.router.navigate(['goals','goal', this.goal_id]);
       }
     });
     

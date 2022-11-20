@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddGoalComponent } from './addgoal.component';
 import { EditgoalComponent } from './editgoal.component';
 import { EditstepComponent } from './editstep.component';
-import { GoalsComponent } from './goals.component';
+
 import { GoalComponent } from './goal.component';
 import { ListComponent } from './list.component';
 import { AddstepsComponent } from './addsteps.component';
@@ -35,7 +35,7 @@ const MY_ROUTES: Routes = [
     AddGoalComponent,
     EditgoalComponent,
     EditstepComponent,
-    GoalsComponent,
+  
     GoalComponent,
     ListComponent,
     AddstepsComponent,
