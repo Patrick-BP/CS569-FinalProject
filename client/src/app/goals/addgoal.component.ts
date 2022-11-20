@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { StateService } from '../globalsate.service';
 import { GoalService } from './goal.service';
 import { IGoal, IStep } from './goals.interface';
@@ -24,7 +25,7 @@ export class AddGoalComponent implements OnInit {
   constructor(
     private goalService: GoalService,
     private router: Router,
-    private globalstate: StateService
+    private globalstate: StateService, private toaster: ToastrService
   ) {
     globalstate.state.subscribe((data) => {
       this.user_id = data.user_id;
@@ -41,6 +42,7 @@ export class AddGoalComponent implements OnInit {
     this.goalService.addGoal(this.goal).subscribe((response) => {
       this.goal_id = response.data._id;
       if (response.success) {
+        this.toaster.success('Gaol is added successfuly!!')
         this.router.navigate(['goals', 'addsteps', this.goal_id], {
           state: this.goal,
         });

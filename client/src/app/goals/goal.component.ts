@@ -96,9 +96,7 @@ if(response.success){
   }
 
 
-  update(step_id: string){
-
-  }
+ 
 
   delete(step_id: string){
    this.goalService.deleteStep(this.goal._id,step_id).subscribe((response) =>{
