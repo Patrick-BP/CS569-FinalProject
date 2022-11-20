@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <label class="control-label" for="password">Password</label>
                             <input type="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Please enter your password" placeholder="Password"  value="" name="password" id="password" class="form-control"  formControlName="password">
-                            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="(password.dirty || password.touched)">
                                 <div class="text-danger " *ngIf="form.get('password')?.invalid">Invalid password</div>
                                 <div *ngIf="form.get('password')?.hasError('invalid')">Error</div>
                             <div class="text-danger " *ngIf="message?.error">{{message.error}}</div>
