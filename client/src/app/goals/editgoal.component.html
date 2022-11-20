@@ -1,0 +1,160 @@
+<div class="header-advance-area">
+    <div class="header-top-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="header-top-wraper">
+                        <div class="row">
+                            <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                <div class="menu-switcher-pro">
+                                    <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="icon nalika-menu-task"></i>
+                                        </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                <div class="header-top-menu tabl-d-n">
+                                    <div class="breadcome-heading fs-1 fw-bolder text-warning text-shadow">
+                                        Stay on track to hit your goals with clear timelines
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu start -->
+    
+    <!-- Mobile Menu end -->
+    <div class="breadcome-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="breadcome-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="icon nalika-home"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Dashboard</h2>
+                                        <p>Welcome to Online Goal Tracker  <span class="bread-ntd">website</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-report">
+                                    <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="icon nalika-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-admin container-fluid res-mg-t-15">
+    <div class="row admin text-center">
+        <div class="col-md-12">
+           
+        </div>
+    </div>
+</div>
+<div class="product-sales-area mg-tb-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-sales-chart">
+                    <div class="portlet-title">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="caption pro-sl-hd">
+                                    <span class="caption-subject text-uppercase"><b></b></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="actions graph-rp">
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+                          <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="text-center custom-login text-light">
+                              <h3>Add a new Goal</h3>
+                            </div>
+                            <div class="hpanel">
+                              <div class="panel-body">
+                                <form
+                                  id="loginForm"
+                                  [formGroup]="form"
+                                  class="form"
+                                  (ngSubmit)="onsubmit()"
+                                >
+                                  <div class="row">
+                                    <div class="form-group col-lg-12">
+                                      <label>Title</label>
+                                      <input
+                                        class="form-control"
+                                        placeholder="Title"
+                                        formControlName="title"
+                                      />
+                                    </div>
+                  
+                                    <div class="form-group col-lg-6">
+                                      <label>Description</label>
+                                      <textarea
+                                        class="form-control"
+                                        placeholder="Description"
+                                        formControlName="description"
+                                        rows="7"
+                                      ></textarea>
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                      <label>Deadline</label>
+                                      <input
+                                      
+                                        type="date"
+                                        class="form-control"
+                                        min="{{ date }}"
+                                        formControlName="deadline"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="text-center">
+                                    <button
+                                      class="btn btn-success loginbtn"
+                                      type="submit"
+                                      [disabled]="!form.valid"
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+                        </div>
+                      </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

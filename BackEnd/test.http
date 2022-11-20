@@ -1,0 +1,91 @@
+
+GET http://localhost:3001/goals/63768dc16f4198d92bdea2c0
+
+###
+GET http://localhost:3001/goals/6376b146c3c960f13d2c5329/goal
+
+
+
+###
+POST http://localhost:3001/goals
+Content-Type: application/json
+
+{
+    "user_id":2,
+    "title":"kkkk",
+    "description":"hhhh",
+    "deadline":"2002/03/09"
+    
+}
+
+###
+PATCH  http://localhost:3001/goals/6375a37c83984b22bb1a975e
+Content-Type: application/json
+
+{
+    "user_id":1,
+    "title":"2music",
+    "description":"2singing",
+    "deadline":"2003/03/09"
+
+}
+###
+DELETE http://localhost:3001/goals/6375a50c38da2e060774ef89
+
+
+###
+PATCH http://localhost:3001/goals/6376b100c3c960f13d2c5327/steps
+Content-Type: application/json
+
+{
+    "title":"step",
+    "description":"step",
+    "status":"not-started",
+    "deadline":"2003/03/09"
+
+}
+
+
+###
+GET http://localhost:3001/goals/step/6376b9edf5926acaf08b9976
+
+###
+GET http://localhost:3001/goals/6375a37c83984b22bb1a975e/steps
+
+
+###
+PATCH http://localhost:3001/goals/6375a37c83984b22bb1a975e/steps/6375a6c7841c2e68886fe08d
+Content-Type: application/json
+
+{
+    "title":"updated",
+    "description":"updated",
+    "deadline":"2004/03/09"
+
+}
+
+###
+DELETE http://localhost:3000/goals/6375a37c83984b22bb1a975e/steps/6375a6c7841c2e68886fe08d
+
+
+
+###
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+    "fullname":"user",
+     "email":"user@miu.edu",
+    "password":"123"
+
+}
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email":"user@miu.edu",
+    "password":"123"
+   
+
+}

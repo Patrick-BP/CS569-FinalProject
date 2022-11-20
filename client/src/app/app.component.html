@@ -1,0 +1,104 @@
+<div class="left-sidebar-pro">
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <strong><img src="assets/img/logo/logosn.png" alt="" /></strong>
+        </div>
+        <div class="nalika-profile">
+            <div class="profile-dtl text-shadow">
+                <a href="#"><img src="assets/img/logo/goal-logo.png" alt="" /></a>
+                <h2>Goal<span class="min-dtn"> Traker</span></h2>
+            </div>
+            <div class="profile-social-dtl">
+                <ul class="dtl-social">
+                    <li><a href="#"><i class="icon nalika-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon nalika-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="left-custom-menu-adp-wrap comment-scrollbar">
+            <nav class="sidebar-nav left-sidebar-menu-pro">
+                <ul class="metismenu" id="menu1">
+                    <li class="">
+                        <a class="has-arrow" [routerLink]="['']" *ngIf="state.token">
+                               <i class="icon nalika-home icon-wrap"></i>
+                               <span class="mini-click-non">Home</span>
+                            </a>
+                        
+                    </li>
+                    <li class="">
+                        <a class="has-arrow" [routerLink]="['goals']" *ngIf="state.token">
+                               <i class="icon nalika-folder icon-wrap"></i>
+                               <span class="mini-click-non">My Goals</span>
+                            </a>
+                        
+                    </li>
+                    <li class="">
+                        <a class="has-arrow"  [routerLink]="['goals','add']" *ngIf="state.token">
+                               <i class="icon nalika-new-file icon-wrap"></i>
+                               <span class="mini-click-non">Add Goals</span>
+                            </a>
+                        
+                    </li>
+                    
+                    <!-- <li class="" *ngIf="state.token">
+                        <a class="has-arrow" href="#">
+                               <i class="icon nalika-user icon-wrap"></i>
+                               <span class="mini-click-non">Profile</span>
+                            </a>
+                        
+                    </li> -->
+
+                    <li class="">
+                        <a class="has-arrow"[routerLink]="['login']"  *ngIf="!state.token">
+                               <i class="icon nalika-arrow-next icon-wrap"></i>
+                               <span class="mini-click-non">Login</span>
+                            </a>
+                        
+                    </li>
+                    <li class="">
+                        <a class="has-arrow" [routerLink]="['signup']"  *ngIf="!state.token">
+                               <i class="icon nalika-new-file icon-wrap"></i>
+                               <span class="mini-click-non">Register</span>
+                            </a>
+                        
+                    </li>
+                    <li class="">
+                        <a class="has-arrow"(click)="logout()"  *ngIf="state.token">
+                               <i class="icon nalika-exit icon-wrap"></i>
+                               <span class="mini-click-non">LogOut</span>
+                            </a>
+                        
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+</div>
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="#"><img class="main-logo" src="assets/img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+    
+   
+    <div class="footer-copyright-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright © 2022  All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

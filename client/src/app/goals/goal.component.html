@@ -1,0 +1,190 @@
+<div class="header-advance-area">
+    <div class="header-top-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="header-top-wraper">
+                        <div class="row">
+                            <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                <div class="menu-switcher-pro">
+                                    <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="icon nalika-menu-task"></i>
+                                        </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                <div class="header-top-menu tabl-d-n">
+                                    <div class="breadcome-heading fs-1 fw-bolder text-warning text-shadow">
+                                        Stay on track to hit your goals with clear timelines
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 fs-2 text-light m-auto ">
+                                <p class="text-end">Welcome {{name}}</p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu start -->
+    
+    <!-- Mobile Menu end -->
+    <div class="breadcome-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="breadcome-list">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-wp">
+                                    <div class="breadcomb-icon">
+                                        <i class="icon nalika-home"></i>
+                                    </div>
+                                    <div class="breadcomb-ctn">
+                                        <h2>Dashboard</h2>
+                                        <p>Welcome to Online Goal Tracker  <span class="bread-ntd">website</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="breadcomb-report">
+                                    <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="icon nalika-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mailbox-area mg-tb-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-4 col-sm-4 col-xs-7">
+                <div class="hpanel responsive-mg-b-30">
+                    <div class="panel-body">
+
+                        <ul class="mailbox-list">
+                            <li class="active">
+                                <a href="#">
+                                    <h1><i class="fa-solid fa-bullseye"></i> {{ goal.title }}</h1> 
+                                    </a>
+                            </li>
+                            <li>
+                                <br>
+                                <p class="ml-5">{{ goal.description }}</p>
+                            </li>
+                            
+                        </ul>
+                        <br>
+                        <h5>Progress</h5>
+                        <div class="progress mt-3">
+                            <div
+                            class="progress-bar  warning text-dark fw-bolder fs-4"  
+                              [appProgressbarGoal]="goal.steps"
+                              role="progressbar"
+                              aria-label="Warning striped example"
+                              aria-valuenow="10"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            ></div>
+                          </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-8 col-sm-8 col-xs-9">
+                <div class="hpanel mg-b-15">
+                    
+                    <div class="panel-body">
+                        <div class="row">
+                            
+                            <div class="col-md-6 col-md-6 col-sm-6 col-xs-12  mg-b-15">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary ft-compse"  (click)="addsteps()">Add More Steps</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-mailbox" *ngIf="empty">
+                                <thead>
+                                    <tr>
+                                      <th>Title</th>
+                                      <th>Description</th>
+                                      <th>Deadline</th>
+                        
+                                      <th>Status</th>
+                                      <th>change Status</th>
+                                      <th>settings</th>
+                                    </tr>
+                                  </thead>
+                                <tbody>
+                                    <tr class="unread" *ngFor="let steps of goal.steps">
+                                        <td><a href="#">{{ steps.title }}</a></td>
+                                        <td class="w-25 m-2">
+                                            <div class="checkbox checkbox-single checkbox-success ">
+                                                {{ steps.description }}
+                                            </div>
+                                        </td>
+                                       
+                                       
+                                        <td class="fw-bold p-5">
+                                            <div class="checkbox checkbox-single checkbox-success " [appPassDate]="steps.deadline" [stepstatus]="steps.status">
+                                                {{ steps.deadline | date }} &nbsp; &nbsp; &nbsp; &nbsp; <img [appPassDate]="steps.deadline" [stepstatus]="steps.status" width="20px"/>
+                                            </div>
+                                        </td>
+                                        
+                                        <td class="">
+                                            
+                                                <label class="badge fw-bolder fs-4" [appProgressColor]="steps.status">{{
+                                                    steps.status
+                                                  }}</label>
+                                            
+                                        </td>
+                                        <td class="">
+                                            <div class="checkbox checkbox-single checkbox-success">
+                                                <form
+                                                [formGroup]="form"
+                                                (change)="handleChanges(steps._id)"
+                                              >
+                                                <select formControlName="status">
+                                                  
+                                                  <option
+                                                    *ngFor="let progres of progress"
+                                                    [defaultSelected]="progres.name =='Select Progress'"
+                                                  >
+                                                    {{ progres.name }}
+                                                  </option>
+                                                </select>
+                                              </form>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <div class="checkbox checkbox-single checkbox-success" >
+                                                <a class="mr-5 fs-4 text-dark" [routerLink]="['','goals','edits',goal_id,steps._id]" >
+                                                    <i class="fa-solid fa-file-pen" ></i></a>
+                                                  <a class="mr-5 fs-4 text-danger" (click)="delete(steps._id)">
+                                                    <i class="fa-solid fa-trash-can"></i></a>
+                                            </div>
+                                        </td>
+ 
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                            <h3 *ngIf="!empty">There is no steps yet</h3>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
