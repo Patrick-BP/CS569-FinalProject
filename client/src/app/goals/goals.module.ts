@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ProgressColorDirective } from './progress-color.directive';
 import { ProgressbarDirective } from './progressbar.directive';
 import { PassDateDirective } from './passdate.directive';
-import { ProgressbarGoalDirective } from './progressbar-goal.directive';
+
 
 const MY_ROUTES: Routes = [
   { path: '', component: ListComponent, title: 'Goals' },
@@ -43,7 +43,7 @@ const MY_ROUTES: Routes = [
     ProgressColorDirective,
     ProgressbarDirective,
     PassDateDirective,
-    ProgressbarGoalDirective,
+    
   ],
   imports: [
     CommonModule,
