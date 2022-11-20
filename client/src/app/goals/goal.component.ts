@@ -36,7 +36,7 @@ export class GoalComponent {
   form = inject(FormBuilder).nonNullable.group({
     status: [''],
   });
-  goall!: IAddGoal ;
+  goall!:IStep[];
   goal:IAddGoal={
     _id:'',
     user_id:'', 
@@ -67,7 +67,7 @@ export class GoalComponent {
     this.goalService.getGoalById(this.goal_id).subscribe((response) => {
       if (response.success) {
         this.goal = response.data ;
-        this.goall = response.data ;
+        this.goall = response.data.steps ;
         this.empty = this.goal.steps.length <= 0 ? false : true;
         
       }
