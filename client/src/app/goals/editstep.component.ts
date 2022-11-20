@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GoalService } from './goal.service';
 import { IGoal, IStep } from './goals.interface';
 
@@ -23,7 +24,7 @@ form = inject(FormBuilder).nonNullable.group({
       deadline: ['',Validators.required],
    
     });
-    constructor(private goalService: GoalService, private router:Router, private activatedRoute: ActivatedRoute) {
+    constructor(private goalService: GoalService, private router:Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
       
       this.goal_id = this.activatedRoute.snapshot.paramMap.get('goal_id') as string;
       console.log(this.goal_id);
@@ -40,7 +41,7 @@ form = inject(FormBuilder).nonNullable.group({
   onsubmit(){
  this.goalService.updateStep(this.goal_id,this.step_id,this.form.value as IStep).subscribe((response)=>{
   if(response.success){
-   
+   this.toastr.success('Step is Updated!!')
     this.router.navigate(['goals','goal',this.goal_id]);
   }
  })

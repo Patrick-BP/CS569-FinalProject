@@ -49,7 +49,7 @@ export class AddstepsComponent implements OnInit {
     this.steps = this.form.value as IStep;
     this.goalService.addStep(this.goal_id, this.steps).subscribe((response) => {
       if(response.success){
-        this.toastr.success('Step was updated');
+        this.toastr.success('Step is added successfuly!!');
         this.router.navigate(['goals','goal', this.goal_id]);
       }
     });
