@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StateService } from '../globalsate.service';
 import { GoalService } from './goal.service';
 import { IGoal, IStep } from './goals.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editgoal',
@@ -20,7 +21,7 @@ form = inject(FormBuilder).nonNullable.group({
       deadline: ['',Validators.required],
    
     });
-constructor(private goalService: GoalService, private router:Router, private activatedRoute: ActivatedRoute) {
+constructor(private goalService: GoalService, private router:Router, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
       
       this.goal_id = this.activatedRoute.snapshot.paramMap.get('goal_id') as string;
       this.goalService.getGoalById(this.goal_id).subscribe((response)=>{
@@ -34,7 +35,7 @@ constructor(private goalService: GoalService, private router:Router, private act
   onsubmit(){
 this.goalService.updateGoal(this.goal_id,this.form.value as IGoal).subscribe((response)=>{
   if(response.success){
-    
+    this.toastr.success('Goal was updated');
     this.router.navigate(['goals']);
   }
 })

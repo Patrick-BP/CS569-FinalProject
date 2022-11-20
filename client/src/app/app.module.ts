@@ -11,6 +11,8 @@ import { StateService } from './globalsate.service';
 import { AttachTokenInterceptor } from './attach-token.interceptor';
 import { AttachTokenGuard } from './attach-token.guard';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const refreshToken = (stateService: StateService) => {
   return () => {
@@ -35,7 +37,8 @@ const MY_ROUTES: Routes = [
 ];
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent],
-  imports: [BrowserModule,FormsModule,ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(MY_ROUTES)],
+  imports: [BrowserModule,FormsModule,ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(MY_ROUTES), BrowserAnimationsModule, 
+  ToastrModule.forRoot()],
   providers: [
     {
       provide: APP_INITIALIZER,

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StateService } from '../globalsate.service';
 import { GoalService } from './goal.service';
 import { IGoal, IStep } from './goals.interface';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addsteps',
   templateUrl:'addsteps.component.html',
@@ -26,7 +26,7 @@ export class AddstepsComponent implements OnInit {
     private goalService: GoalService,
     private router: Router,
     private globalstate: StateService,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute, private toastr: ToastrService
   ) {
     this.goal_id = activatedRouter.snapshot.paramMap.get('goal_id') as string;
     goalService.getGoalById(this.goal_id).subscribe((res) => {
@@ -47,9 +47,12 @@ export class AddstepsComponent implements OnInit {
   ngOnInit(): void {}
   onsubmit() {
     this.steps = this.form.value as IStep;
-    this.goalService
-      .addStep(this.goal_id, this.steps)
-      .subscribe((response) => {});
-    this.router.navigate(['goals']);
+    this.goalService.addStep(this.goal_id, this.steps).subscribe((response) => {
+      if(response.success){
+        this.toastr.success('Step was updated');
+        this.router.navigate(['..']);
+      }
+    });
+    
   }
 }
