@@ -22,10 +22,7 @@ import { IGoal, IStep } from './goals.interface';
     background-color:#f94808
   }
 
-  .badge{
-        width:80%;
-        
-      }`]
+  `]
    
 })
 export class GoalComponent implements OnInit {
